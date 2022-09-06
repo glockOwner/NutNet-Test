@@ -11,7 +11,7 @@ class StoreController extends BaseController
     public function __invoke(AlbumRequest $request)
     {
         $data = $request->validated();
-        $this->service->uploadImg($request);
+        $data['cover'] = $this->service->uploadImg($request);
         $this->service->store($data);
         return redirect()->route('albums.index');
     }
